@@ -1,0 +1,47 @@
+	
+	
+	
+		method
+		
+		String Buffer Class
+		- buffer : 임시 저장 공간, 임시 공간을 활용해 변경, 수정이 가능
+		- 데이터 변동이 자주 일어나는 경우에 사용
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		-- 이미지첨부
+		MultipartRequest -- cos.jar가 제공 / 없으면 못 씀
+		jar / MultipartRequest 객체를 사용해야 함.
+		request에 저장된 param은 확인안되고,
+		mr(객체)에 저장된 param은 확인된다.
+		
+		중복 회피를 위해 만들어주는 uuid == unique(universally unique identifier)
+		                                          주의  ===> 올라간 이름과 원래 이름을 db에 저장해 둬야 함
+		                                          
+		                                          
+		응답 헤더 ->
+		
+		
+		
+		
+		new DefaultFileRenamePolicy()
+		: 파일 이름이 겹치면, rename 해준다 : file 이름 정책에 따른다.
+		
+		getOriginalFileName : file name - upload 당시의 실제 file name을 가져온다.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

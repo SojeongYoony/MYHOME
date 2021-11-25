@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.free">	<!-- package.filename -->
+
+	<!-- select all free list :: 기본 BASE LIST가 될 것이다 IF NEED SOMETHING ELSE, ADD IT HERE -->
+	<select id="selectFreeList" resultType="dto.Free" parameterType="Map">		<!-- Map 안의 요소는 begin-R , end-R  -->
+		SELECT B.RN, B.FNO, B.WRITER, B.CONTENT, B.IP, B.HIT, B.CREATED, B.LASTMODIFIED, B.STATE, B.DEPTH, B.GROUPNO, B.GROUPORD
+		  FROM (SELECT ROWNUM AS RN, A.FNO, A.WRITER, A.CONTENT, A.IP, A.HIT, A.CREATED, A.LASTMODIFIED, A.STATE, A.DEPTH, A.GROUPNO, A.GROUPORD
+		  		  FROM (SELECT FNO, WRITER, CONTENT, IP, HIT, CREATED, LASTMODIFIED, STATE, DEPTH, GROUPNO, GROUPORD
+		  		 		  FROM FREE
+		  		 		 ORDER BY groupno DESC, groupord ASC) A ) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<!-- get totalCount -->
+	<select id="selectTotalCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM FREE
+	</select>
+	
+	<!-- insert  -->
+	<insert id="insertFree" parameterType="dto.Free">
+		INSERT INTO
+		  	   FREE
+		  VALUES (
+		  	  FREE_SEQ.NEXTVAL,
+		  	  #{writer},
+		  	  #{content},
+		  	  #{ip},
+		  	  0,		<!-- hit -->
+		  	  SYSDATE,	<!-- created -->
+		  	  SYSDATE,	<!-- lastModified -->
+		  	  0,		<!-- state -->
+		  	  0,		<!-- depth -->
+		  	  FREE_SEQ.CURRVAL,	<!-- SAME AS FNO == NEXTVAL -->
+		  	  0			<!-- groupOrd -->
+		  )
+	</insert>
+	
+	<!-- view -->
+	<select id="selectFreeByfNo" parameterType="Long" resultType="dto.Free">
+		SELECT FNO, WRITER, CONTENT, IP, HIT, CREATED, LASTMODIFIED, STATE, DEPTH, GROUPNO, GROUPORD
+		  FROM FREE
+		 WHERE FNO = #{fNo}	
+	</select>
+	
+	<update id="updateHit" parameterType="Long">
+		UPDATE FREE
+		   SET HIT = HIT + 1
+		 WHERE FNO = #{fNo}
+	</update>
+	
+	<!-- update -->
+	<update id="updateFree" parameterType="dto.Free">
+		UPDATE FREE
+		   SET CONTENT = #{content}, lastmodified = SYSDATE
+		 WHERE FNO = #{fNo}
+	</update>
+	
+	
+	<!-- delete ==> update 번호를 받아 state 수정 -->
+	<update id="deleteFree" parameterType="Long">
+		UPDATE FREE
+		   SET STATE = -1
+		 WHERE FNO = #{fNo}
+	</update>
+	
+	<!-- insert reply ==> need update -->
+	<insert id="insertReply" parameterType="dto.Free">
+		INSERT INTO
+		  	   FREE
+		  VALUES (
+		  	  FREE_SEQ.NEXTVAL,
+		  	  #{writer},
+		  	  #{content},
+		  	  #{ip},
+		  	  0,			<!-- hit -->
+		  	  SYSDATE,		<!-- created -->
+		  	  SYSDATE,		<!-- lastModified -->
+		  	  0,			<!-- state -->
+		  	  #{depth},		<!-- param depth -->
+		  	  #{groupNo},	<!-- param groupNo -->
+		  	  #{groupOrd}	<!-- groupOrd -->
+		  )
+	</insert>
+	
+	<!--  update Previous Reply Group Order  -->
+	<update id="updatePreviousReplyGroupOrd" parameterType="dto.Free">
+		UPDATE FREE
+		   SET GROUPORD = GROUPORD + 1
+		 WHERE GROUPNO = #{groupNo}		<!-- 같은    groupNo 인가? -->
+		   AND GROUPORD > #{groupOrd}	<!-- 원글의 groupOrd 보다 큰 댓글인가? -->
+	</update>
+	
+	<!-- search 기능  *삭제 된 게시글은 검색하지 않음 조건 추가 :: STATE = 0 == 작성된 게시글의 상태 -->
+	<select id="findFree" parameterType="Map" resultType="dto.Free">
+		SELECT B.RN, B.FNO, B.WRITER, B.CONTENT, B.IP, B.HIT, B.CREATED, B.LASTMODIFIED, B.STATE, B.DEPTH, B.GROUPNO, B.GROUPORD
+		  FROM (SELECT ROWNUM AS RN, A.FNO, A.WRITER, A.CONTENT, A.IP, A.HIT, A.CREATED, A.LASTMODIFIED, A.STATE, A.DEPTH, A.GROUPNO, A.GROUPORD
+		  		  FROM (SELECT FNO, WRITER, CONTENT, IP, HIT, CREATED, LASTMODIFIED, STATE, DEPTH, GROUPNO, GROUPORD
+		  		 		  FROM FREE
+		  		 		 WHERE STATE = 0
+		  		 		   AND <if test="column != 'ALL'">${column} LIKE #{query}</if>
+		 	    			   <if test="column == 'ALL'">(WRITER LIKE #{query} OR CONTENT LIKE #{query})</if>
+		  		 		 ORDER BY groupno DESC, groupord ASC) A ) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<!-- select total count amount for paging *삭제 된 게시글은 검색하지 않음 조건 추가 :: STATE = 0 == 작성된 게시글의 상태 -->
+	<select id="selectFindCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		  FROM FREE
+		 WHERE STATE = 0
+		   AND <if test="column != 'ALL'">${column} LIKE #{query}</if>
+		 	   <if test="column == 'ALL'">(WRITER LIKE #{query} OR CONTENT LIKE #{query})</if>
+	</select>
+	
+	
+</mapper>

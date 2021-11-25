@@ -1,0 +1,138 @@
+
+ 
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '관리자', '이용 시 주의사항', '바른말 사용하기', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글1', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글2', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글3', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글4', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글5', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, '테스트', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+INSERT INTO NOTICE 
+VALUES (NOTICE_SEQ.NEXTVAL, 'admin', '테스트 게시글', '테스트를 한번 해보자', 0, '0:0:0:0:0:0:1', SYSDATE, SYSDATE);
+COMMIT 
+ 

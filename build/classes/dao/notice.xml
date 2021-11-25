@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.notice">	<!-- package.filename -->
+	
+	<!-- select list -->
+	<select id="selectNoticeList" parameterType="Map" resultType="dto.Notice">
+		SELECT B.nno, B.writer, B.title, B.content, B.hit, B.ip, B.ndate, B.nlastmodified
+	      FROM (SELECT ROWNUM AS RN, A.nno, A.writer, A.title, A.content, A.hit, A.ip, A.ndate, A.nlastmodified
+	      		  FROM (SELECT nno, writer, title, content, hit, ip, ndate, nlastmodified
+	      		          FROM notice 
+	      		         ORDER BY nno DESC) A ) B
+	     WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<!-- get list table's total count -->
+	<select id="selectTotalCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM notice
+	</select>
+	
+	<!-- select one -->
+	<select id="selectNoticeView" parameterType="Long" resultType="dto.Notice">
+		SELECT nno, writer, title, content, hit, ip, ndate, nlastmodified
+	      FROM notice
+	     WHERE nno = #{nNo}
+	</select>
+<!-- nNo : Long Type => parameter Type == Long Type -->
+	
+	<!-- hit ++ :: 번호(nNo)가 일치하는 게시글의 hit를 늘려라 -->
+	<update id="updateNoticeHit" parameterType="Long">
+		UPDATE NOTICE
+		   SET HIT = HIT + 1
+		 WHERE NNO = #{nNo}
+	</update>
+
+	<!-- insertNotice -->
+	<insert id="insertNotice" parameterType="dto.Notice">
+		INSERT INTO notice
+		VALUES (NOTICE_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, 0, #{ip}, SYSDATE, SYSDATE)
+	</insert>
+	
+	<!-- update notice content -->
+	<update id="updateNotice" parameterType="dto.Notice">
+		UPDATE notice
+		   SET title = #{title}, content = #{content}, nlastmodified = SYSDATE
+		 WHERE nno = #{nNo}
+	</update>
+	
+	<!-- delete notice content -->
+	<delete id="deleteNotice" parameterType="Long">
+		DELETE
+		  FROM notice
+		 WHERE nno = #{nNo}
+	</delete>
+
+	<!-- find query  ID findNotice -->
+	<!-- 
+		${column} : $는 작은 따옴표(') 안 붙음								만약, 검색의 column이 WRITER이면, WRITER 형태, 안쓰면 'WRITER'라서 작동안함
+					숫자 또는 칼럼용으로 사용. 대개, column용으로 많이 사용 함
+		#{query}  : #은 작은 따옴표(')가 붙음.
+					문자용으로 사용.
+					단, 숫자용으로 사용할 수 있음.
+		TIP : 괜히 구분해서 사용하다 오류내지말고 변수들은 #, 컬럼은 $을 사용하는 것을 추천함.
+		ALL : WRITER, TITLE, CONTENT 칼럼을 모두 통틀어 검색해야 함.
+	 -->
+	<select id="findNotice" parameterType="Map" resultType="dto.Notice">
+		SELECT B.nno, B.writer, B.title, B.content, B.hit, B.ip, B.ndate, B.nlastmodified
+	      FROM (SELECT ROWNUM AS RN, A.nno, A.writer, A.title, A.content, A.hit, A.ip, A.ndate, A.nlastmodified
+	      		  FROM (SELECT nno, writer, title, content, hit, ip, ndate, nlastmodified
+	      		          FROM notice 
+	      		         WHERE <if test="column != 'ALL'">${column} LIKE #{query}</if>
+	     	   				   <if test="column == 'ALL'">(WRITER LIKE #{query} OR TITLE LIKE #{query} OR CONTENT LIKE #{query})</if>
+	      		         ORDER BY nno DESC) A ) B
+	     WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	<!-- NOTICE는 삭제된 게시글은 REAL로 삭제 되므로 STATE값으 표시가 필요 없음 // 참고 여기서 JOIN을 하게끔 TABLE엮어주는거 연습이 필요함  -->
+	
+	
+	<!-- 8. selectFindCount -->
+	<select id="selectFindCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+	      FROM notice
+	     WHERE <if test="column != 'ALL'">${column} LIKE #{query}</if>
+	     	   <if test="column == 'ALL'">(WRITER LIKE #{query} OR TITLE LIKE #{query} OR CONTENT LIKE #{query})</if>
+	</select>
+	
+	
+	
+	
+
+</mapper>

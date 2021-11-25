@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.board">	<!-- package.filename -->
+
+	<insert id="insertBoard" parameterType="dto.Board">
+		INSERT INTO BOARD
+		VALUES (BOARD_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, #{fileName}, #{saveName}, SYSDATE, SYSDATE)
+	</insert>
+
+	<!-- select -->
+	<select id="selectBoardList" resultType="dto.Board">
+		SELECT bno, writer, title, content, filename, savename, created, lastmodified
+		  FROM board
+		 ORDER BY bno DESC
+	</select>
+
+
+	<!-- select board view -->
+	<select id="selectBoardView" parameterType="Long" resultType="dto.Board">
+		SELECT bno, writer, title, content, filename, savename, created, lastmodified
+		  FROM board
+		 WHERE bno = #{bNo}
+	</select>
+
+</mapper>

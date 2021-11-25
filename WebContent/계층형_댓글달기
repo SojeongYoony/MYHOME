@@ -1,0 +1,120 @@
+
+
+	게시글 
+	DEPTH		0
+	GROUPNO		FNO
+	GROUPORD	0
+	
+	
+	댓글			
+   DEPTH		원글 DEPTH + 1
+   GROUPNO		원글 GROUPNO
+   GROUPORD		원글 GROUPORD + 1
+   				같은 GROUPNO + 이미 달린 댓글 중 원글GROUPORD 보다 큰 것들 + 1			-- GROUPORD *최신댓글을 위로 표시 함 : 댓글의 순서
+   				
+   	
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    2			[RE] 김치찌개		  1				   1 					1
+    
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    2			[RE] 김치찌개		  1				   1 					2
+    3			[RE] 육개장		  1				   1				    1
+    
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    2			[RE] 김치찌개		  1				   1 					3
+    3			[RE] 육개장		  1				   1				    2
+    4			[RE] 설렁탕		  1				   1  					1
+    
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    2			[RE] 김치찌개		  1				   1 					4
+    3			[RE] 육개장		  1				   1				    2
+    5			[RE:RE] 놉		  2 			   1					3
+    4			[RE] 설렁탕		  1				   1  					1
+    
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    2			[RE] 김치찌개		  1				   1 					5
+    3			[RE] 육개장		  1				   1				    2
+    5			[RE:RE] 놉		  2 			   1					4
+    6			[RE:RE] 예스		  2				   1					3
+    4			[RE] 설렁탕		  1				   1  					1
+    
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    2			[RE] 김치찌개		  1				   1 					5
+    3			[RE] 육개장		  1				   1				    2
+    5			[RE:RE] 놉		  2 			   1					4
+    6			[RE:RE] 예스		  2				   1					3
+    4			[RE] 설렁탕		  1				   1  					1
+    7			오늘 저녁은?		  0				   7					0
+    
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    2			[RE] 김치찌개		  1				   1 					5
+    3			[RE] 육개장		  1				   1				    2
+    5			[RE:RE] 놉		  2 			   1					4
+    6			[RE:RE] 예스		  2				   1					3
+    4			[RE] 설렁탕		  1				   1  					1
+    7			오늘 저녁은?		  0				   7					0
+    8			[RE] 삼겹살		  1				   7					1
+    
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    2			[RE] 김치찌개		  1				   1 					5
+    3			[RE] 육개장		  1				   1				    2
+    5			[RE:RE] 놉		  2 			   1					4
+    6			[RE:RE] 예스		  2				   1					3
+    4			[RE] 설렁탕		  1				   1  					1
+    7			오늘 저녁은?		  0				   7					0
+    8			[RE] 삼겹살		  1				   7					2
+    9			[RE] 김치			  1				   7					1
+    
+    
+  --------------------- 제일 먼저 단 순서로 정렬  : GROUPORD 값으로 정렬 ---------------------
+    
+    
+   FNO			CONTENT			DEPTH			GORUPNO				GROUPORD
+    1			오늘 점심은?	      0		    	   1					0
+    4			[RE] 설렁탕		  1				   1  					1
+    3			[RE] 육개장		  1				   1				    2
+    6			[RE:RE] 예스		  2				   1					3
+    5			[RE:RE] 놉		  2 			   1					4
+    2			[RE] 김치찌개		  1				   1 					5
+    7			오늘 저녁은?		  0				   7					0
+    9			[RE] 김치			  1				   7					1
+    8			[RE] 삼겹살		  1				   7					2
+    
+    ORDER BY GROUPNO ASC, GROUPORD ASC			-- 글은 작성 순서대로, 댓글은 최신 순으로 표시
+    ORDER BY GROUPNO DESC, GROUPORD ASC			-- 최신 게시글, 댓글 위로 표시
+    
+    
+	DEPTH, GROUPNO 알아내기    
+    
+	본 정렬 --
+		SELECT B.RN, B.FNO, B.WRITER, B.CONTENT, B.IP, B.HIT, B.CREATED, B.LASTMODIFIED, B.STATE, B.DEPTH, B.GROUPNO, B.GROUPORD
+		  FROM (SELECT ROWNUM AS RN, A.FNO, A.WRITER, A.CONTENT, A.IP, A.HIT, A.CREATED, A.LASTMODIFIED, A.STATE, A.DEPTH, A.GROUPNO, A.GROUPORD
+		  		  FROM (SELECT FNO, WRITER, CONTENT, IP, HIT, CREATED, LASTMODIFIED, STATE, DEPTH, GROUPNO, GROUPORD
+		  		 		  FROM FREE
+		  		 		 ORDER BY FNO DESC) A ) B
+		  WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	
+	수정 정렬 --
+		SELECT B.RN, B.FNO, B.WRITER, B.CONTENT, B.IP, B.HIT, B.CREATED, B.LASTMODIFIED, B.STATE, B.DEPTH, B.GROUPNO, B.GROUPORD
+		  FROM (SELECT ROWNUM AS RN, A.FNO, A.WRITER, A.CONTENT, A.IP, A.HIT, A.CREATED, A.LASTMODIFIED, A.STATE, A.DEPTH, A.GROUPNO, A.GROUPORD
+		  		  FROM (SELECT FNO, WRITER, CONTENT, IP, HIT, CREATED, LASTMODIFIED, STATE, DEPTH, GROUPNO, GROUPORD
+		  		 		  FROM FREE
+		  		 		 ORDER BY groupno DESC, groupord ASC) A ) B
+		  WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}   
+    
+    
+    
+    
+    
+    
+    
+    
+    

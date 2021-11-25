@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.member">	<!-- package.filename -->
+
+	<!-- 동적 쿼리를 사용 함 :: if문을 안에서 사용하여, 조건을 주고 조건에 맞을 때 결과를 조회함. -->
+	<!-- 실제 서비스에서는 해선 안되지만, 연습을 위해 아래 쿼리를 재활용한다. -->
+	<select id="selectMember" parameterType="dto.Member" resultType="dto.Member">
+		SELECT MNO, ID, PW, NAME, EMAIL, MDATE
+		  FROM MEMBER
+		 WHERE 1 = 1
+		 <if test="id != null">AND ID = #{id}</if>
+		 <if test="pw != null">AND PW = #{pw}</if>
+	</select>
+
+	<!-- login log -->
+	<insert id="loginLog" parameterType="String">
+		INSERT INTO MEMBER_LOG
+		VALUES (MEMBER_LOG_SEQ.NEXTVAL, #{id}, SYSDATE)
+	</insert>
+	
+	<!-- insert member -->
+	<insert id="insertMember" parameterType="dto.Member">
+		INSERT INTO member
+		VALUES (MEMBER_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, SYSDATE)
+	</insert>
+	
+	<!-- delete member -->
+	<delete id="deleteMember" parameterType="Long">
+ 		DELETE
+ 		  FROM member
+ 		 WHERE mno = #{mNo}	
+	</delete>
+	
+	<!-- delete MemberLog id 받아와야 함 == String == id가 일치하는 회원의 log를 함께 지우기 (외래키로 묶여있음)  이유는 글의 작성자/ 댓글의 작성자 모두 id로 묶어서 사용하고 있으므로 -->
+	<delete id="deleteMemberLog" parameterType="String">
+		DELETE
+		  FROM member_log
+		 WHERE id = #{id}
+	</delete>
+	
+	
+</mapper>
