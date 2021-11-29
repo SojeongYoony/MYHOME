@@ -5,16 +5,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="dao.board">	<!-- package.filename -->
 
+	<!-- insertBoard -->
 	<insert id="insertBoard" parameterType="dto.Board">
 		INSERT INTO BOARD
 		VALUES (BOARD_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, #{fileName}, #{saveName}, SYSDATE, SYSDATE)
 	</insert>
+	
+	<!-- selectTotalCount -->
+	<select id="selectTotalCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM BOARD
+	</select>
+	
 
-	<!-- select -->
-	<select id="selectBoardList" resultType="dto.Board">
-		SELECT bno, writer, title, content, filename, savename, created, lastmodified
-		  FROM board
-		 ORDER BY bno DESC
+	<!-- selectBoardList -->
+	<select id="selectBoardList" resultType="dto.Board" parameterType="Map">
+		SELECT B.bno, B.writer, B.title, B.content, B.filename, B.savename, B.created, B.lastmodified
+		  FROM (SELECT ROWNUM AS RN, A.bno, A.writer, A.title, A.content, A.filename, A.savename, A.created, A.lastmodified
+		  		  FROM (SELECT bno, writer, title, content, filename, savename, created, lastmodified
+		  		  		  FROM BOARD
+		  		  		 ORDER BY bno DESC ) A ) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
 
 
@@ -24,5 +35,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM board
 		 WHERE bno = #{bNo}
 	</select>
+
+	<!-- delete -->
+	<delete id="deleteBoard" parameterType="Long">
+		DELETE 
+		  FROM board
+		 WHERE bno = #{bNo} 
+	</delete>
+
+	<!-- update board -->
+	<update id="updateBoard" parameterType="dto.Board">
+		UPDATE BOARD
+		   SET title = #{title}, content = #{content}, lastmodified = SYSDATE
+		   	   <if test="fileName != null">, filename = #{fileName}</if>
+		   	   <if test="saveName != null">, savename = #{saveName}</if>
+		 WHERE bno = #{bNo}
+	</update>
+
 
 </mapper>

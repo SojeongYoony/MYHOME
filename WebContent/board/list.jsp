@@ -9,10 +9,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>이미지 게시판</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<style>
+	a {
+		text-decoration: none;
+		color: black;
+	}
+
+	table {
+		border-collapse: collapse;
+		width: 500px;
+		text-align: center;
+	}
+	table tr {
+		padding: 5px;
+	}
+	tbody td {
+		padding: 3px 0 3px 0;
+	}
+	thead td{
+		height: 35px;
+		border-bottom: 1px solid gray;
+		border-top: 1px solid gray;
+	}
+	#login_link {
+		padding: 10px 0 10px 5px;
+	}
+	</style>
 </head>
 <body>
 
-	<div>
+	<div id="login_link">
 		<c:if test="${loginUser != null}">	<!-- login User만 게시글 작성 버튼 볼 수 있음 -->
 			<a href="insertForm.board">새 이미지 게시글 작성하기</a>
 		</c:if>
@@ -29,12 +55,12 @@
 	</div>
 	
 	<!-- 목록 -->
-	<table border="1">
+	<table>
 		<thead>
 			<tr>
 				<td>순번</td>
-				<td>작성자</td>
 				<td>제목</td>
+				<td>작성자</td>
 				<td>작성일</td>
 			</tr>
 		</thead>
@@ -45,18 +71,20 @@
 				</tr>
 			</c:if>
 			<c:if test="${not empty list}">
-				<c:forEach items="${list}" var="board"> 
+				<c:forEach varStatus="vs" items="${list}" var="board"> 
 					<tr>
-						<td>${board.bNo}</td>
-						<td>${board.writer}</td>
+						<td>${startNum - vs.index}</td>
 						<td><a href="view.board?bNo=${board.bNo}">${board.title}</a></td>
+						<td>${board.writer}</td>
 						<td>${board.created}</td>
 					</tr>
 				</c:forEach>
 			</c:if>
 		</tbody>	
 		<tfoot>
-			
+			<tr>
+				<td colspan="4">${pageEntity}</td>
+			</tr>
 		</tfoot>			
 	</table>
 	

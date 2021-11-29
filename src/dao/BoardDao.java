@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -34,10 +35,18 @@ public class BoardDao {
 		return result;
 	}
 	
-	/* select Board */
-	public List<Board> selectBoardList() {
+	/* selectTotalCount */
+	public int selectTotalCount() {
 		SqlSession ss = factory.openSession();
-		List<Board> list = ss.selectList("dao.board.selectBoardList");
+		int totalRecord = ss.selectOne("dao.board.selectTotalCount");
+		ss.close();
+		return totalRecord;
+	}
+	
+	/* select Board */
+	public List<Board> selectBoardList(Map<String, Integer> map) {
+		SqlSession ss = factory.openSession();
+		List<Board> list = ss.selectList("dao.board.selectBoardList", map);
 		ss.close();
 		return list;
 	}
@@ -50,5 +59,22 @@ public class BoardDao {
 		return board;
 	}
 	
+	/* delete board */
+	public int deleteBoard(Long bNo) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.delete("dao.board.deleteBoard", bNo);
+		if (result > 0) ss.commit();
+		ss.close();
+		return result;
+	}
+	
+	/* update board */
+	public int updateBoard(Board board) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.update("dao.board.updateBoard", board);
+		if (result > 0) ss.commit();
+		ss.close();
+		return result;
+	}
 	
 }

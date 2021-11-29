@@ -114,7 +114,7 @@ public class Page {
 			sb.append("▶▶&nbsp;");
 		} else {
 			if (path.contains("?")) {
-				sb.append("<a href=\"" + path + "&page="+ totalPage + "\">▶▶</a>");
+				sb.append("<a href=\"" + path + "&page="+ totalPage + "\">▶▶</a>");	 	// list.board&page=1
 			} else {
 				sb.append("<a href=\"" + path + "?page="+ totalPage + "\">▶▶</a>");
 			}

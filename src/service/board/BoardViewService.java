@@ -26,6 +26,7 @@ public class BoardViewService implements BoardService {
 		
 		if (board != null) {
 			// view.jsp로 보낼  data 저장하기  :: null이 아니면 저장하고, forward로 넘기기
+		  //request.setAttribute("referer", request.getHeader("referer"));	// 게시글의 목록 주소 이전 주소라는 뜻. ==>사용할 수없어 지움
 			request.setAttribute("board", board);
 			request.setAttribute("year", new SimpleDateFormat("yyyy").format(board.getLastModified()));
 			request.setAttribute("month", new SimpleDateFormat("MM").format(board.getLastModified()));

@@ -48,7 +48,7 @@
 			수정, 삭제 : 작성자만		
 		 -->
 		<div>
-			<input type="button" value="목록이동" onclick="location.href='list.free'">
+			<input type="button" value="목록이동" onclick="location.href='${referer}'">
 			<c:if test="${loginUser.id == free.writer}">
 				<form method="post" id="f">
 					<!-- 수정할 게시글 정보를 넘기기 --><%-- 어떤 내용, 어떤 게시글인지 꼭 parameter로 담아서 보낼 것 !!! 그리고 받는 곳에서는 parameter를 받는다!!! --%>

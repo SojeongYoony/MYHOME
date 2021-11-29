@@ -35,7 +35,8 @@
 		
 		getOriginalFileName : file name - upload 당시의 실제 file name을 가져온다.
 		
-		
+		request.header
+		request.setAttribute("referer", request.getHeader("referer")); 	// 게시글이 존재하는 목록의 주소
 		
 		
 		
